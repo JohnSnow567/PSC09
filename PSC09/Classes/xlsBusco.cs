@@ -9,7 +9,10 @@ namespace PSC09
 {
     public class cnn
     {
-        public static string db = "server=D20I5561\\SQLEXPRESS; database=DBPRACTICA04; integrated security =true";
+        public static string db = "server=DESKTOP-G7PV0I1\\SQLEXPRESS; database=DBPRACTICA04;" +
+            " integrated security =true"; // Tener en cuenta que es una DB local,
+                                          // si queremos que se ejecute tendremos que cambiar la ruta
+                                          // del servidor SQL al actual del dispositivo
     }
 
     public class Item
