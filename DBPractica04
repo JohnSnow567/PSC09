@@ -1,0 +1,277 @@
+create database DBPRACTICA04
+
+/**** Object:  Table [dbo].[USUARIO]    Script Date: 15/05/2024 9:56:18 AM ****/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[USUARIO](
+ [NUMEROEMPLEADO] [int] NULL,
+ [POSICION] [nvarchar](5) NULL,
+ [NOMBRECORTO] [nvarchar](50) NULL,
+ [CORREO] [nvarchar](70) NULL,
+ [CLAVE] [nvarchar](25) NULL,
+ [FOTO] [image] NULL,
+ [ACTIVO] [nvarchar](5) NULL,
+ [NOMBRECOMPLETO] [nvarchar](50) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+/****** Object:  Table [dbo].[POSICIONES]    Script Date: 29/05/2024 8:55:29 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[POSICIONES](
+	[IDposicion] [nvarchar](5) NULL,
+	[NombreDePosicion] [nvarchar](50) NULL,
+	[Fabrica] [nvarchar](3) NULL,
+	[Departamento] [nvarchar](3) NULL,
+	[Estatus] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+/**** Object:  Table [dbo].[FABRICA]    Script Date: 29/05/2024 9:52:48 AM ****/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FABRICA](
+ [IDfabrica] [nvarchar](3) NULL,
+ [NombreDefabrica] [nvarchar](50) NULL,
+ [Localidad] [int] NULL,
+ [Estatus] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[DEPARTAMENTO](
+ [IDdepartamento] [nvarchar](3) NULL,
+ [NombreDepartamento] [nvarchar](50) NULL,
+ [IDfabrica] [nvarchar](3) NULL,
+ [Estatus] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+
+INSERT INTO DEPARTAMENTO (IDdepartamento, NombreDepartamento, IDfabrica, Estatus) VALUES 
+('001', 'Laboratorio y Calidad Produccion', '001', 1), 
+('002', 'DEPARTAMENTO DOS', '003', 1), 
+('003', 'DEPARTAMENTO TRES', '002', 1)
+
+
+
+INSERT INTO POSICIONES (IDPOSICION, NombreDePosicion, FABRICA, Departamento) VALUES 
+('001', 'CONTADOR', '001', '001'),
+('010', 'ENCARGADO DE PRODUCCION', '002', '010'),
+('011', 'CONTROLADOR DE PLC', '010', '010'),
+('012', 'AUXILIAR DE CALIDAD', '001', '011')
+
+
+
+INSERT INTO FABRICA (IDfabrica, NombreDefabrica, Localidad, Estatus) VALUES 
+('001', 'FABRICA UNO', 27, 1),
+('002', 'CENTRO DISTRIBUCION', 27, 1),
+('010', 'MOLINO DE PAPEL', 1, 1),
+('011', 'PLANTA DETERGENTES', 1, 1),
+('003', 'PLANTA DE HARINA', 23, 1)
+
+
+INSERT INTO USUARIO (NUMEROEMPLEADO, POSICION, NOMBRECORTO, CORREO, CLAVE, ACTIVO, NOMBRECOMPLETO) VALUES 
+(1, '001', 'USER01', 'user01@itla.edu.do', '1234', 'True', 'USUARIO UNO'),
+(2, '010', 'USER02', 'user02@itla.edu.do', '1234', 'True', 'USUARIO DOS'),
+(3, '011', 'USER03', 'user03@itla.edu.do', '1234', 'True', 'USUARIO TRES')
+
+
+select IDPOSICION from POSICIONES
+
+select Nombredefabrica from FABRICA
+
+select NombreDepartamento from DEPARTAMENTO
+
+SELECT T1.NUMEROEMPLEADO,
+T1.NOMBRECORTO,
+T1.POSICION,
+T1.CORREO,
+T1.FOTO,
+T1.NOMBRECOMPLETO,
+T1.ACTIVO,
+T1.CLAVE,
+T2.NOMBREDEPOSICION
+FROM USUARIO T1
+LEFT JOIN POSICIONES T2 ON T1.POSICION = T2.IDPOSICION
+
+
+SELECT T1.IDPOSICION, 
+T1.NombreDePosicion, 
+T1.Fabrica, 
+T1.Departamento, 
+T2.NombreDefabrica, 
+T3.NombreDepartamento
+FROM POSICIONES T1 
+INNER JOIN FABRICA T2 ON T1.Fabrica = T2.IDfabrica
+INNER JOIN DEPARTAMENTO T3 ON T1.Departamento = T3.IDdepartamento
+
+
+SELECT A.IDPOSICION,
+A.NombreDePosicion,
+A.DEPARTAMENTO,
+A.FABRICA,  
+B.NOMBREDEPARTAMENTO,  
+C.NOMBREDEFABRICA, 
+A.ESTATUS
+FROM POSICIONES A 
+INNER JOIN DEPARTAMENTO B ON A.DEPARTAMENTO = B.IDDEPARTAMENTO 
+INNER JOIN FABRICA C ON A.FABRICA = C.IDFABRICA 
+               
+
+
+/**** Object:  Table [dbo].[PRODUCTOS]    Script Date: 6/19/2024 8:41:27 AM ****/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PRODUCTOS](
+ [Item] [nvarchar](10) NULL,
+ [Descripcion] [nvarchar](80) NULL,
+ [CantidadEnExistencia] [int] NULL,
+ [Costo] [float] NULL,
+ [PrecioDeVenta] [float] NULL,
+ [Impuesto] [float] NULL,
+ [EstatusProducto] [int] NULL,
+ [BarCode] [nvarchar](50) NULL,
+ [Imagen] [image] NULL,
+ [Ruta] [text] NULL,
+ [TieneImpuesto] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+select * from PRODUCTOS
+
+select imagen from PRODUCTOS
+
+SELECT ITEM, DESCRIPCION  FROM PRODUCTOS  WHERE DESCRIPCION LIKE '%%' ORDER BY DESCRIPCION ASC
+
+
+
+/****** Object:  Table [dbo].[mESTATUSCTE]    Script Date: 7/10/2024 8:55:38 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mESTATUSCTE](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ESTATUS] [nvarchar](15) NULL,
+	[TIPOESTATUS] [int] NULL,
+ CONSTRAINT [PK_ESTATUSCTE] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CLIENTES](
+	[IDcliente] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](80) NULL,
+	[Direccion] [nvarchar](80) NULL,
+	[Sector] [nvarchar](50) NULL,
+	[Ciudad] [nvarchar](50) NULL,
+	[Pais] [nvarchar](50) NULL,
+	[Telefono01] [nvarchar](20) NULL,
+	[Telefono02] [nvarchar](20) NULL,
+	[IDidentificacion] [nvarchar](25) NULL,
+	[Estatus] [int] NULL,
+	[MONTO] [float] NULL,
+	[Correo] [nvarchar](80) NULL,
+	[Imagen] [image] NULL,
+	[RutaImagen] [text] NULL,
+	[PagaImpuesto] [int] NULL,
+ CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[IDcliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CLIENTES]  WITH CHECK ADD  CONSTRAINT [FK_CLIENTES_mESTATUSCTE] FOREIGN KEY([Estatus])
+REFERENCES [dbo].[mESTATUSCTE] ([ID])
+GO
+
+
+
+/****** Object:  Table [dbo].[HFACTURA]    Script Date: 7/10/2024 8:53:15 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[HFACTURA](
+	[FACTURA] [nvarchar](10) NULL,
+	[CLIENTE] [nvarchar](10) NULL,
+	[FECHA] [nvarchar](8) NULL,
+	[SUBTOTAL] [float] NULL,
+	[IMPUESTO] [float] NULL,
+	[MONTOFACTURADO] [float] NULL,
+	[ACTIVO] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+
+/****** Object:  Table [dbo].[DFACTURA]    Script Date: 7/10/2024 8:53:25 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DFACTURA](
+	[SECUENCIA] [int] IDENTITY(1,1) NOT NULL,
+	[FACTURA] [nvarchar](10) NULL,
+	[CLIENTE] [nvarchar](10) NULL,
+	[FECHA] [nvarchar](8) NULL,
+	[ARTICULO] [nvarchar](10) NULL,
+	[CANTIDAD] [float] NULL,
+	[PRECIODEVENTA] [float] NULL,
+	[IMPUESTO] [float] NULL,
+	[MONTOPORLINEA] [float] NULL,
+	[ACTIVO] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[SECUENCIA](
+ [ID] [int] NULL,
+ [DESCRIPCION] [nvarchar](50) NULL,
+ [SECUENCIA] [float] NULL
+) ON [PRIMARY]
+
+GO
+
+insert into SECUENCIA (ID, DESCRIPCION, SECUENCIA) values ('1', 'FACTURAS', '100')
+insert into SECUENCIA (ID, DESCRIPCION, SECUENCIA) values ('2', 'RECIBOS', '100')
