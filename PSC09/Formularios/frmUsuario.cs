@@ -38,6 +38,7 @@ namespace PSC09
         // ------------------------------------------------------
         // BOTONES
         // ------------------------------------------------------
+        #region Botones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
@@ -58,10 +59,12 @@ namespace PSC09
         {
             this.Close(); // CIERRA FORM
         }
+        #endregion
 
         // ------------------------------------------------------
         // TEXTBOX
         // ------------------------------------------------------
+        #region TextBox
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((int)e.KeyChar == (int)Keys.Enter)  // pregunta que si presionaste la tecla Enter
@@ -142,10 +145,12 @@ namespace PSC09
                 BuscarPuestoDeTrabajo(txtPuesto.Text);  // viaja hacia el metodo y le envia el valor contenido en el textbox
             }
         }
+        #endregion
 
         // ------------------------------------------------------
         // METODOS
         // ------------------------------------------------------
+        #region Metodos
         private void LlenarEstatus()
         {
             List<Item> lista = new List<Item>();
@@ -205,5 +210,6 @@ namespace PSC09
         {
 
         }
+        #endregion
     }
 }

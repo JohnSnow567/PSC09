@@ -30,7 +30,7 @@ namespace PSC09
             this.Text = "Factura";
             this.KeyPreview = true;
 
-            lblFechaFactura.Text = DateTime.Now.ToString("ddMMyyyy");
+            lblFechaFactura.Text = DateTime.Now.ToString("dd-MM-yyyy");
 
             ExisteData = false;
 
@@ -126,7 +126,9 @@ namespace PSC09
 
             double nmCant = Convert.ToDouble(txtCantidad.Text);
             double nmPrec = Convert.ToDouble(lblPrecio.Text);
-   
+
+            lblImpuestoLn.Text = "0";
+
             if (nmCant > 0) // Preguntamos que si el textbox cantidad es mayor que 0
             {
                 if (nmPrec > 0) // Preguntamos que si el label precio es mayor que 0
@@ -203,15 +205,13 @@ namespace PSC09
                             {
                                 if (lblTotalLn.Text.Trim() != string.Empty)  // pregunta que si el label es diferente de vacio
                                 {
-                                    if (ExisteData == true)  
-                                    {
-                                        InsertaLinea();
-                                        ActualizaSecuenciaFactura();
-                                        TotalizarFactura();
-                                        LimpiarFormulario();
-                                        txtArticulo.Focus();
+                                    
+                                     InsertaLinea();
+                                     TotalizarFactura();
+                                     LimpiarDetalle();
+                                     txtArticulo.Focus();
                                         
-                                    }
+                                   
                                 }
                             }
                         }
@@ -241,14 +241,29 @@ namespace PSC09
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-
+            frmVenProducto frm = new frmVenProducto();
+            frm.Show();
         }
 
 
         private void btnArticulo_Click(object sender, EventArgs e)
         {
+            frmVenProducto frm = new frmVenProducto();
+            DialogResult dialogResult = frm.ShowDialog();
 
+            //if (dialogResult == DialogResult.OK)
+            //{
+                txtArticulo.Text = frm.varf1;
+                lblArticulo.Text = frm.varf2;
+            //}
         }
+
+            private void btnFactura_Click(object sender, EventArgs e)
+        {
+            frmVenProducto frm = new frmVenProducto();
+            frm.Show();
+        }
+
         #endregion
         //------------------------------------------------------
         //                     METODOS

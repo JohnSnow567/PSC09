@@ -59,6 +59,8 @@
             this.lblFactura = new System.Windows.Forms.Label();
             this.lblPagaImpuesto = new System.Windows.Forms.Label();
             this.lblFechaFactura = new System.Windows.Forms.Label();
+            this.btnCliente = new System.Windows.Forms.Button();
+            this.btnFactura = new System.Windows.Forms.Button();
             this.btnArticulo = new System.Windows.Forms.Button();
             this.btnLimpiarDet = new System.Windows.Forms.Button();
             this.btnBorrarLn = new System.Windows.Forms.Button();
@@ -69,8 +71,6 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnFactura = new System.Windows.Forms.Button();
-            this.btnCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -397,6 +397,26 @@
             this.lblFechaFactura.TabIndex = 97;
             this.lblFechaFactura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnCliente
+            // 
+            this.btnCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.Image")));
+            this.btnCliente.Location = new System.Drawing.Point(234, 142);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(45, 21);
+            this.btnCliente.TabIndex = 100;
+            this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
+            this.btnFactura.Location = new System.Drawing.Point(234, 106);
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(45, 23);
+            this.btnFactura.TabIndex = 99;
+            this.btnFactura.UseVisualStyleBackColor = true;
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
             // btnArticulo
             // 
             this.btnArticulo.Image = ((System.Drawing.Image)(resources.GetObject("btnArticulo.Image")));
@@ -529,25 +549,6 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnFactura
-            // 
-            this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
-            this.btnFactura.Location = new System.Drawing.Point(234, 106);
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(45, 23);
-            this.btnFactura.TabIndex = 99;
-            this.btnFactura.UseVisualStyleBackColor = true;
-            // 
-            // btnCliente
-            // 
-            this.btnCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.Image")));
-            this.btnCliente.Location = new System.Drawing.Point(234, 142);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(45, 21);
-            this.btnCliente.TabIndex = 100;
-            this.btnCliente.UseVisualStyleBackColor = true;
-            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // frmFactura
             // 

@@ -87,6 +87,18 @@
     <Compile Include="Formularios\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmVenFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVenFactura.Designer.cs">
+      <DependentUpon>frmVenFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmVenFactura2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVenFactura2.Designer.cs">
+      <DependentUpon>frmVenFactura2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmVenProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVenFactura.resx">
+      <DependentUpon>frmVenFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVenFactura2.resx">
+      <DependentUpon>frmVenFactura2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVenProducto.resx">
       <DependentUpon>frmVenProducto.cs</DependentUpon>
@@ -189,6 +207,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Iconos\32x32\actions\filenew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\16 %28Search%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\32x32\actions\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\32x32\actions\view_text.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

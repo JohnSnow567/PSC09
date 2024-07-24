@@ -46,10 +46,11 @@ namespace PSC09
                 this.Close();
             }
         }
-       
+
         //----------------------------------------------------------------
         // TEXTBOX
         //----------------------------------------------------------------
+        #region Textbox
         private void txtProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((int)e.KeyChar == (int)Keys.Enter)  // pregunta que si presionaste la tecla Enter
@@ -161,10 +162,11 @@ namespace PSC09
                 }
             }
         }
-
+        #endregion
         //---------------------------------------------------------------------
         // BOTONES
         //---------------------------------------------------------------------
+        #region Botones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (txtProducto.Text.Trim() != string.Empty)  // pregunta que si el textbox es diferente de vacio
@@ -279,10 +281,11 @@ namespace PSC09
                 BuscarData(txtProducto.Text);
             }
         }
-
+        #endregion
         //-------------------------------------------------------------
         // METODOS
         //-------------------------------------------------------------
+        #region Metodos
         private void MostrarImagen(string numProducto)
         {
             btnImagen.Image = null;
@@ -505,5 +508,6 @@ namespace PSC09
                 }
             }
         }
+        #endregion
     }
 }

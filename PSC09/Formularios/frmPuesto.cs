@@ -39,7 +39,7 @@ namespace PSC09
         // ------------------------------------------------------
         // TEXTBOX
         // ------------------------------------------------------
-
+        #region Textbox
         private void txtPosicion_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((int)e.KeyChar == (int)Keys.Enter)  // pregunta que si presionaste la tecla Enter
@@ -116,11 +116,11 @@ namespace PSC09
             }
         }
 
-
+        #endregion
         // ------------------------------------------------------
         // BOTONES
         // ------------------------------------------------------
-
+        #region Botones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
@@ -146,10 +146,11 @@ namespace PSC09
         {
             this.Close();
         }
-
+        #endregion  
         //------------------------------------------------------
         // METODOS
         //------------------------------------------------------
+        #region Metodos
         private void LimpiarFormulario()
         {
             txtDepartamento.Clear();
@@ -309,6 +310,7 @@ namespace PSC09
             cdm.ExecuteNonQuery();
             cxn.Close();
         }
+        #endregion
     }
 
 }
