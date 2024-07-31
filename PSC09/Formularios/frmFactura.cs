@@ -157,6 +157,7 @@ namespace PSC09
         {
             if (lblTotal.Text.Trim() != string.Empty)
             {
+                BorrarData(lblFactura.Text);
                 InsertarData();
                 LimpiarFormulario();
                 txtCliente.Focus();
@@ -251,11 +252,9 @@ namespace PSC09
             frmVenProducto frm = new frmVenProducto();
             DialogResult dialogResult = frm.ShowDialog();
 
-            //if (dialogResult == DialogResult.OK)
-            //{
                 txtArticulo.Text = frm.varf1;
                 lblArticulo.Text = frm.varf2;
-            //}
+ 
         }
 
             private void btnFactura_Click(object sender, EventArgs e)
